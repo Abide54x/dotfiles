@@ -1,0 +1,69 @@
+# ZSH INSTALLATION INSTRUCTIONS:
+# https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH#how-to-install-zsh-in-many-platforms
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$HOME/bin:$GOPATH/bin:$GOROOT/bin:$HOME/.cargo/bin:$PATH
+
+# OMZ Installation with curl:
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+## PLUGINS:
+# USE: git clone https://github.com/owner/repo.git $ZSH_CUSTOM/plugins/
+#
+# https://github.com/zsh-users/zsh-autosuggestions.git
+# https://github.com/zsh-users/zsh-syntax-highlighting
+# https://github.com/chrissicool/zsh-256color
+# https://github.com/zpm-zsh/clipboard
+# https://github.com/0b10/cheatsheet
+
+export ZSH="/home/rmoore/.oh-my-zsh"
+
+ZSH_THEME=powerlevel10k/powerlevel10k
+ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+COMPLETION_WAITING_DOTS="true"
+
+plugins=( 
+  sudo 
+  git 
+  zsh-syntax-highlighting 
+  zsh-autosuggestions 
+  docker 
+  docker-compose 
+  zsh-256color 
+  clipboard
+  cheatsheet
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+alias x='exit'
+alias ls='lsd'
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+alias czsh='code ~/.zshrc'
+alias nzsh='nvim ~/.zshrc'
+alias pvpn='sudo protonvpn'
+alias vpnc='pvpn c'
+alias vpnf='pvpn c -f'
+alias vpnd='pvpn d'
+alias mksudo='sudo chmod +s'
+
+alias sz="source ~/.zshrc"
+alias hc="history -c"
