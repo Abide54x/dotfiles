@@ -1,0 +1,45 @@
+Host lc
+    HostName lobster.casa
+    Port 1337
+    IdentityFile ~/.ssh/id_rsa
+
+Host *.lc
+    ProxyJump lc
+
+Host hanzo
+    HostName 192.168.1.150
+    ProxyJump lc
+    
+Host sariatu
+    HostName 192.168.1.100
+    ProxyJump lc
+
+Host wpdev
+    HostName ctechmfgdev.ssh.wpengine.net
+    Port 22
+    User ctechmfgdev
+
+Host wpdev-sftp
+    HostName ctechmfgdev.sftp.wpengine.com
+    Port 2222
+    User ctechmfgdev-robm
+    IdentityFile ~/.ssh/id_rsa
+
+Host wpstage
+    HostName ctechmfgstage.ssh.wpengine.net
+    Port 22
+    User ctechmfgstage
+
+Host wpprod
+    HostName ctechmfg.ssh.wpengine.net
+    Port 22
+    User ctechmfg
+    
+Host *.ssh.wpengine.net
+    ControlMaster auto
+    ControlPersist 10m
+    ControlPath ~/.ssh/cm-%r@%h:%p
+
+Host *
+    User rmoore
+    IdentityFile ~/.ssh/id_rsa
