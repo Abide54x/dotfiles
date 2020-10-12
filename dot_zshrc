@@ -26,7 +26,8 @@ plugins=(
         git
         brew
         gradle
-.zshrc                                                                                                      1,1            Top
+        ng
+        npg
         yarn
         zsh-autosuggestions
         osx
